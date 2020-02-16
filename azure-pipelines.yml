@@ -22,3 +22,9 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
+    
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'devopstest-arm-serviceconnection'
+    appName: 'HGTDevOpsTestApp'
+    package: $(System.ArtifactsDirectory)/**/*.zip
